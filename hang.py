@@ -1,5 +1,5 @@
-from wordlist import WordList
-from HanganGame import HangmanGame
+from Classes.wordlist import WordList
+from Classes.HanganGame import HangmanGame
 
 def checkDifferentLetters(word):
         ## set() is a collection of unique elements

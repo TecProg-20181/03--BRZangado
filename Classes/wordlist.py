@@ -4,8 +4,8 @@ import string
 class WordList(object):
 	
 	def __init__(self):
-		self.__file_a = "palavras.txt"
-		self.__file_b = "words.txt"
+		self.__file_a = "wordsFiles/palavras.txt"
+		self.__file_b = "wordsFiles/words.txt"
 
 	def createWordList(self, file_choice):
 	    """

@@ -16,28 +16,22 @@ class HangmanGame(object):
 	            break
 	        else:
 
-	            print 'You have ', self.__guesses, 'guesses left.'
-
-	            available = self.getAvailableLetters()
-
-	            print 'Available letters', available
-
-	            letter = self.get_input()
-
-	            if letter in self.__lettersGuessed:
-	                text = 'Oops! You have already guessed that letter: '
-
-	            elif letter in secretWord:
-	                self.__lettersGuessed.append(letter)
-	                text = 'Good Guess: '
-
-	            else:
-	                self.__lettersGuessed.append(letter)
-	                self.__guesses -=1
-	                text = 'Oops! That letter is not in my word: '
-
-	            guessed = self.setGuessedWord(secretWord)
-	            self.message(text, guessed)
+	        	available = self.getAvailableLetters()
+	        	letter = self.get_input()
+	        	print 'You have ', self.__guesses, 'guesses left.'
+	        	print 'Available letters', available
+	        	
+	        	if letter in self.__lettersGuessed:
+	        		text = 'Oops! You have already guessed that letter: '
+	        	elif letter in secretWord:
+	        		self.__lettersGuessed.append(letter)
+	        		text = 'Good Guess: '
+	        	else:
+	        		self.__lettersGuessed.append(letter)
+	        		self.__guesses -=1
+	        		text = 'Oops! That letter is not in my word: '
+	        	guessed = self.setGuessedWord(secretWord)
+	        	self.message(text, guessed)
 
 	    else:
 	        print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
