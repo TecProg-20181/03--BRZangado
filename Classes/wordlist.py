@@ -25,7 +25,7 @@ class WordList(object):
 
 	def get_secret_word(self, option):
 
-		if option == 1:
+		if option == '1':
 			file_choice = self.__file_a
 		else:
 			file_choice = self.__file_b
