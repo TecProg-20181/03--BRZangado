@@ -22,7 +22,7 @@ class HangmanGame(object):
 
 	            print 'Available letters', available
 
-	            letter = raw_input('Please guess a letter: ')
+	            letter = self.get_input()
 
 	            if letter in self.__lettersGuessed:
 	                text = 'Oops! You have already guessed that letter: '
@@ -70,4 +70,14 @@ class HangmanGame(object):
 	def message(self, text, guessed):
 	    print text + guessed
 	    print '------------'
+
+	def get_input(self):
+		"""
+		Validating user entry
+		"""
+		numbers = ['0','1','2','3','4','5','6','7','8','9']
+		user_input = raw_input('Please guess a letter: ')
+		while user_input in numbers:
+			user_input = raw_input('Numbers are not in the game :( Try Again: ')
+		return user_input
 		
