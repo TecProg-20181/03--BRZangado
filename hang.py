@@ -18,12 +18,12 @@ def hangman(secretWord):
     new_game.start(secretWord)
     
 
-option = input("Please, select the difficulty: [1] Easy | [2] Hard ")
+option = raw_input("Please, select the difficulty: [1] Easy | [2] Hard ")
 """
 Validates if the user input is correct
 """
-while(option != 1 and option != 2):
-    option = input("Please, type a valid choice ")
+while(option != 1 and option != 2 or option == ''):
+    option = raw_input("Please, type a valid choice ")
 
 wordlist = WordList()
 secretWord = wordlist.get_secret_word(option)

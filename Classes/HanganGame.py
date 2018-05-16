@@ -71,7 +71,8 @@ class HangmanGame(object):
 		"""
 		numbers = ['0','1','2','3','4','5','6','7','8','9']
 		user_input = raw_input('Please guess a letter: ')
-		while user_input in numbers:
-			user_input = raw_input('Numbers are not in the game :( Try Again: ')
+		while user_input in numbers or user_input == '':
+			print('Noooops Bad Choice, :(')
+			user_input = raw_input('Try Again, digit something valid: ')
 		return user_input
 		
