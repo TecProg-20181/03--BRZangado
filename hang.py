@@ -1,7 +1,6 @@
-import random
-import string
+from wordlist import WordList
 
-WORDLIST_FILENAME = "palavras.txt"
+"""WORDLIST_FILENAME = "palavras.txt"
 
 def loadWord():
     
@@ -11,10 +10,7 @@ def loadWord():
     return testedWord
 
 def createWordList():
-    """
-    Depending on the size of the word list, this function may
-    take a while to finish.
-    """
+    
     print "Loading word list from file..."
     # inFile: file
     inFile = open(WORDLIST_FILENAME, 'r', 0)
@@ -26,10 +22,8 @@ def createWordList():
 
     return wordlist
 
-def checkNumberOfLetters(word):
-    while True:
-        if len(word) <= 8:
-            return word
+"""
+
 def checkDifferentLetters(word):
     ## set() is a collection of unique elements
     howMany = set(word)
@@ -49,14 +43,12 @@ def getGuessedWord():
 
      guessed = ''
 
-
      return guessed
 
 def initLetters():
     import string
     # 'abcdefghijklmnopqrstuvwxyz'
     letters = string.ascii_lowercase
-
 
     return letters
 
@@ -129,6 +121,11 @@ def hangman(secretWord):
 
     startGame(secretWord,guesses)
 
+option = input("Please, select the difficulty: [1] Easy | [2] Hard ")
 
-secretWord = loadWord()
+while(option != 1 and option != 2):
+    option = input("Please, type a valid choice ")
+
+wordlist = WordList()
+secretWord = wordlist.get_secret_word(option)
 hangman(secretWord)
