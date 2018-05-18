@@ -2,16 +2,17 @@ import string
 
 class HangmanGame(object):
 	
-	def __init__(self):
+	def __init__(self, secret_word):
+		self.__secretWord = secret_word
 		self.__guessesLeft = 8
 		self.__lettersGuessed = []
 		self.__all_letters = string.ascii_lowercase
 
-	def start(self, secretWord):
+	def start(self):
 
 		while self.__guessesLeft > 0:
 
-			if (self.isWordGuessed(secretWord)):
+			if (self.isWordGuessed()):
 
 				print 'Congratulations, you won!'
 				break
@@ -26,7 +27,7 @@ class HangmanGame(object):
 				if letter in self.__lettersGuessed:
 					text = 'Oops! You have already guessed that letter: '
 
-				elif letter in secretWord:
+				elif letter in self.__secretWord:
 					self.__lettersGuessed.append(letter)
 					text = 'Good Guess: '
 
@@ -35,15 +36,15 @@ class HangmanGame(object):
 					self.__guessesLeft -=1
 					text = 'Oops! That letter is not in my word: '
 
-				guessed = self.setGuessedWord(secretWord)
+				guessed = self.setGuessedWord()
 				self.message(text, guessed)
 
 		else:
-			print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
+			print 'Sorry, you ran out of guesses. The word was ', self.__secretWord, '.'
 
-	def isWordGuessed(self, secretWord):
+	def isWordGuessed(self):
 
-	    for letter in secretWord:
+	    for letter in self.__secretWord:
 	        if letter in self.__lettersGuessed:
 	            pass
 	        else:
@@ -57,9 +58,9 @@ class HangmanGame(object):
 	            letters = letters.replace(letter, '')
 	    return letters
 
-	def setGuessedWord(self, secretWord):
+	def setGuessedWord(self):
 		guessedWord = ''
-		for letter in secretWord:
+		for letter in self.__secretWord:
 			if letter in self.__lettersGuessed:
 				guessedWord += letter
 			else:

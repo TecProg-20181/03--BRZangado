@@ -25,8 +25,8 @@ def hangman(secretWord):
     print 'The word has ', differentLetters, ' different letters.'
     print '-------------'
 
-    new_game = HangmanGame()
-    new_game.start(secretWord)
+    new_game = HangmanGame(secretWord)
+    new_game.start()
     
 difficulty = get_difficulty()
 wordlist = WordList()
