@@ -10,6 +10,8 @@ def get_difficulty():
         print("That's not a option! Come on user, you can do it!")
         option = str(raw_input("Please, type a valid choice "))
 
+    return option
+
 def checkDifferentLetters(word):
         ## set() is a collection of unique elements
         howMany = set(word)
