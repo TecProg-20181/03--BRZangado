@@ -28,8 +28,6 @@ def hangman(secretWord):
     new_game = HangmanGame()
     new_game.start(secretWord)
     
-
-
 difficulty = get_difficulty()
 wordlist = WordList()
 secretWord = wordlist.get_secret_word(difficulty)
