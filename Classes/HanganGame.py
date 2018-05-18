@@ -3,38 +3,39 @@ import string
 class HangmanGame(object):
 	
 	def __init__(self):
-		self.__guesses = 8
+		self.__guessesLeft = 8
 		self.__lettersGuessed = []
 		self.__all_letters = string.ascii_lowercase
 
 	def start(self, secretWord):
 
-	    while self.__guesses > 0:
+		while self.__guessesLeft > 0:
+			if (self.isWordGuessed(secretWord)):
+				print 'Congratulations, you won!'
+				break
+			else:
+				print 'You have ', self.__guessesLeft, 'guesses left.'
+				available = self.getAvailableLetters()
+				print 'Available letters', available
+				letter = self.get_input()
 
-	        if (self.isWordGuessed(secretWord)):
-	            print 'Congratulations, you won!'
-	            break
-	        else:
+				if letter in self.__lettersGuessed:
+					text = 'Oops! You have already guessed that letter: '
 
-	        	available = self.getAvailableLetters()
-	        	letter = self.get_input()
-	        	print 'You have ', self.__guesses, 'guesses left.'
-	        	print 'Available letters', available
-	        	
-	        	if letter in self.__lettersGuessed:
-	        		text = 'Oops! You have already guessed that letter: '
-	        	elif letter in secretWord:
-	        		self.__lettersGuessed.append(letter)
-	        		text = 'Good Guess: '
-	        	else:
-	        		self.__lettersGuessed.append(letter)
-	        		self.__guesses -=1
-	        		text = 'Oops! That letter is not in my word: '
-	        	guessed = self.setGuessedWord(secretWord)
-	        	self.message(text, guessed)
+				elif letter in secretWord:
+					self.__lettersGuessed.append(letter)
+					text = 'Good Guess: '
 
-	    else:
-	        print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
+				else:
+					self.__lettersGuessed.append(letter)
+					self.__guessesLeft -=1
+					text = 'Oops! That letter is not in my word: '
+
+				guessed = self.setGuessedWord(secretWord)
+				self.message(text, guessed)
+
+		else:
+			print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
 
 	def isWordGuessed(self, secretWord):
 
