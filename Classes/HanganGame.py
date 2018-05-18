@@ -10,10 +10,14 @@ class HangmanGame(object):
 	def start(self, secretWord):
 
 		while self.__guessesLeft > 0:
+
 			if (self.isWordGuessed(secretWord)):
+
 				print 'Congratulations, you won!'
 				break
+
 			else:
+				
 				print 'You have ', self.__guessesLeft, 'guesses left.'
 				available = self.getAvailableLetters()
 				print 'Available letters', available
